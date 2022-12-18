@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./fullpage.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Fullpage</title>
+</head>
+
+<body>
+    <div id="fullpage">
+        <section class="section s1">
+            <h1>Sunlight Zone</h1>
+            <div class="info">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatibus tempore dolorum, itaque id magni incidunt, ex adipisci est, voluptas nam cum animi assumenda voluptates.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, doloremque?</p>
+                <div id="img">
+                    <img src="s whale.png" alt="" class="imgs">
+                <img src="s turle.png" alt="" class="imgs">
+                <img src="images-removebg-preview.png" alt="" class="imgs">
+                </div>
+            
+            </div>
+        </section>
+        <section class="section s2">
+            <h1>Twilight Zone</h1>
+            <div class="info">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatibus tempore dolorum, itaque id magni incidunt, ex adipisci est, voluptas nam cum animi assumenda voluptates.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, doloremque?</p>
+                <div id="img">
+                    <img src="t octopus.png" alt="" class="imgs">
+                <img src="t sea horse.png" alt="" class="imgs">
+                <img src="t sperm whale.png" alt="" class="imgs">
+                </div>
+            </div>
+        </section>
+        <section class="section s3">
+            <h1>Deep Zone</h1>
+            <div class="info">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae voluptatibus tempore dolorum, itaque id magni incidunt, ex adipisci est, voluptas nam cum animi assumenda voluptates.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, doloremque?</p>
+                <div id="img">
+                    <img src="d angler.png" alt="" class="imgs">
+                <img src="d gul.png" alt="" class="imgs">
+                <img src="d sea spider.png" alt="" class="imgs">
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+        integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+        integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <script src="./fullpage.min.js"></script>
+    <script >
+        new fullpage('#fullpage', {
+    autoScrolling:true,
+    sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
+    navigation: true,
+    onLeave: (origin,destination,direction)=> {
+        const section = destination.item;
+        console.log(section);
+        TweenMax.fromTo(section, 1, {opacity: 0}, {opacity: 1},'+=700');
+    }
+});
+
+new fullpage("#fullpage",{
+    autoscrolling: true,
+    navigation: true,
+    onleave: (origin,destination,direction) => {
+        const section = destination.item;
+        const title = section.querselector("h1");
+        const tl = new timeLinemMax({ delay: 0.5 });
+        tl.fromTo(title,0.5, {y: "50" , opacity : 0} , {y: 0, opacity: 1});
+
+        if(destination.index === 1){
+            const imgs = document.querySelector('.imgs');
+            const info = document.querySelector('.info');
+
+            tl.fromTo(imgs, 0.7, {x: '100%'}, {x: '-30%'})
+            .fromto(imgs [0], 1, {opacity: 0}, {opacity: 1})
+            .fromto(imgs [1], 1, {opacity: 0}, {opacity: 1})
+            .fromto(imgs [2], 1, {opacity: 0}, {opacity: 1})
+        }
+    }
+})
+    </script>
+</body>
+
+</html>
